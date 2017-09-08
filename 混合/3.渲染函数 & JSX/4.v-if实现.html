@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<mydiv :message="msg">
+			<template slot="s1">哈哈哈哈</template>
+			<template slot="s2"><a href="#">啦啦啦啦</a></template>
+		</mydiv>
+	</div>
+
+	<script src="../../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: false
+			},
+			components: {
+				"mydiv": {
+					render: function (h){
+						if(this.message){
+							return h("h1",this.$slots.s1);
+						}else{
+							return h("h2",this.$slots.s2);
+						}
+					},
+					props: ["message"]
+				}
+			}
+		})
+	</script>
+</body>
+</html>

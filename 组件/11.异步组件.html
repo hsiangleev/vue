@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<child></child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		// 工厂函数接收一个 resolve 回调，在收到从服务器下载的组件定义时调用。也可以调用 reject(reason) 指示加载失败
+		//一秒后生成组件
+		Vue.component("child",function (res,rej){
+			setTimeout(function (){
+				res({
+					template: "<p>lalala</p>"
+				})
+			}, 1000)
+		})
+		var vm=new Vue({
+			el: "#app",
+		})
+	</script>
+</body>
+</html>

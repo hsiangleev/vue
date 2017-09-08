@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<btn1></btn1>
+		<btn2></btn2>
+	</div>
+
+
+	<script src="../js/vue.js"></script>
+	<script>
+		//组件1
+		var tem1={
+			template: "<div><span>{{ msg1 }}</span><button>click</button></div>",
+			created: function (){
+				var self=this;
+				this.$root.bus.$on("click2",function (value){
+					self.print(value);
+				})
+			},
+			data: function (){
+				return {
+					msg1: ""
+				}
+			},
+			methods: {
+				print: function (value){
+					this.msg1=value;
+				}
+			},
+			beforeDestroy: function (){
+				this.$root.bus.$off("click2")
+			}
+		}
+		//组件2
+		var tem2={
+			template: "<div><span>{{ msg2 }}</span><button @click='submit'>click</button></div>",
+			data: function (){
+				return {
+					msg2: "asdadasfasd"
+				}
+			},
+			methods: {
+				submit: function (){
+					this.$root.bus.$emit("click2",this.msg2)
+					console.log(this.$root.test)
+				}
+			}
+		}
+
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				test: "测试根组件",
+
+				//根组件下放置空实例
+				bus: new Vue()
+			},
+			components: {
+				"btn1": tem1,
+				"btn2": tem2
+			}
+		})
+	</script>
+</body>
+</html>

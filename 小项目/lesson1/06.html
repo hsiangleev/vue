@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			position: relative;
+			font-size: 12px;
+		}
+		label{
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.content{
+			width: 100%;
+			height: 50px;
+			border: 1px solid #f69;
+			position: absolute;
+			top: 25px;
+			left: 0;
+			display: none;
+			background-color: #ffefa4;
+		}
+		.show{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<label v-on:mouseenter="showDiv" v-on:mouseleave="hideDiv"><input type="checkbox">{{ msg }}</label>
+		<div class="content" v-bind:class="addStyle">{{ msg1 }}</div>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#box",
+			data: {
+				msg: "两周内自动登陆",
+				msg1: "为了您的信息安全，请不要在网吧或公用电脑上使用此功能！",
+				addStyle: {
+					show: false
+				}
+			},
+			methods: {
+				showDiv: function (){
+					this.addStyle={
+						show: true
+					}
+				},
+				hideDiv: function (){
+					this.addStyle={
+						show: false
+					}
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.top{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+		.show{
+			display: block;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="top">
+		<button @click="hide">点击</button>
+		<div class="top" :class="{hide:isTrue}">	<!-- 或:class="aa" -->
+			
+		</div>
+		<a :href="addre" :title="tit">连接</a>
+		<ul id="oUl">
+			<li v-for="item in food"><a href="#">{{item}}</a></li>
+		</ul>
+
+		<div>
+			{{msg}}
+			<p>{{reverseMessage}}{{now}}</p>
+		</div>
+	</div>
+		
+	
+
+
+	<script src="js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el:"#top",
+			data:{
+				isTrue: false,
+				addre:"http://www.baidu.com",
+				tit:"放上面",
+				food:[
+					"苹果","橘子","梨子","草莓"
+
+				],
+				msg:"abcde"
+
+			},
+			methods:{
+				hide:function () {
+					if(this.isTrue){
+						this.isTrue=false;
+					}else{
+						this.isTrue=true;
+					}
+					
+				}
+			},
+			computed:{
+				reverseMessage:function () {
+					return this.msg.split("").reverse().join("")
+				},
+				now:function () {
+					return new Date();
+				}
+			}
+		})
+	</script>
+</body>
+</html>

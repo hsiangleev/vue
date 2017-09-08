@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app" >
+		<child :msg="msg"></child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+	//包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on="$listeners" 传入内部组件——在创建更高层次的组件时非常有用。
+		
+		var tem={
+			props: ["msg"],
+			template: "<p>{{ this.$parent.msg }}</p>",
+			mounted: function (){
+				console.log(this.$listeners)	
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "aaa"
+			},
+			components: {
+				"child": tem
+			}
+		})
+	</script>
+</body>
+</html>

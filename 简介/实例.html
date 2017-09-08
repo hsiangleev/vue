@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app1">
+		<span :class="{red:addClass}">hahaha</span>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el:"#app1",
+			data:{
+				addClass:true
+			}
+		})
+	</script>
+</body>
+</html>

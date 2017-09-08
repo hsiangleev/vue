@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 500px;
+			height: 100px;
+			margin: 0 auto;
+			font-size: 12px;
+		}
+		span{
+			width: 50px;
+			height: 50px;
+			display: block;
+			margin-top: 20px;
+			margin-left: 20px;
+			font-size: 20px;
+			color: #f69;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<input type="text" v-model="msg">输入数字求和，数字之间用半角","号分隔<br>
+		<span>{{ sum }}</span>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#box",
+			data: {
+				msg: "1,5",
+				sum: "6"
+			},
+			watch: {
+				msg: function (val){
+					var arr=val.split(",");
+					this.sum=arr.reduce(function (acc,value,index){
+						var num=parseFloat(value);
+						if(!num){
+							num=0;
+						}
+						return acc+num;
+					},0)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

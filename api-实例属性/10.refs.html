@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app" >
+		<child ref="r1"></child>
+		<child ref="r2"></child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+	//一个对象，其中包含了所有拥有 ref 注册的子组件。
+		var tem={
+			template: "<p>lalala</p>",
+		}
+		var vm=new Vue({
+			el: "#app",
+			components: {
+				"child": tem
+			},
+			mounted: function (){
+				console.log(this.$refs.r2)	
+			}
+		})
+	</script>
+</body>
+</html>

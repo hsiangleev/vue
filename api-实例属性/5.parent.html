@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app" >
+		<h2><child></child></h2>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+	//父实例，如果当前实例有的话。
+		var tem={
+			template: "<p>{{ this.$parent.msg }}</p>",
+			mounted: function (){
+				console.log(this.$parent)
+				console.log(this.$parent.msg)
+				console.log(this.$parent===this.$root)	//相等
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "aaa"
+			},
+			components: {
+				"child": tem
+			},
+			mounted: function (){
+				console.log(this.$parent)	//没有父实例 undefined
+			}
+		})
+	</script>
+</body>
+</html>

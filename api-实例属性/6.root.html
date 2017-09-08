@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app" >
+		<h2><child></child></h2>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+	//当前组件树的根 Vue 实例。如果当前实例没有父实例，此实例将会是其自己。
+		var tem={
+			template: "<p>{{ this.$parent.msg }}</p>",
+			mounted: function (){
+				console.log(this.$root.msg)	
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "aaa"
+			},
+			components: {
+				"child": tem
+			},
+			mounted: function (){
+				console.log(this.$root.msg)		//自身
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 通过1 2 改变3    通过3 4 改变5-->
+	<div class="box">
+		<input v-model="msg">	<!-- 1. -->
+		<br>
+		<my-div :aaa="msg"></my-div>	<!-- 3. -->
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var tem={
+			props: ["aaa"],			<!-- 4. -->
+			template: "<div>{{ aaa }}</div>"	<!-- 5. -->
+		}
+		new Vue({
+			el: ".box",
+			data: {
+				msg: ""		<!-- 2. -->
+			},
+			components: {
+				"my-div": tem
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app1" v-once>
+		{{msg}}
+	</div>
+	<div id="app2" v-html="msg">
+	</div>
+	<div id="app3">
+		<input type="submit" v-bind:disabled="msg"></input>
+		<p v-bind:title="msg2">放上面</p>
+	</div>
+	<div id="app4">
+		<span>{{5+5}}</span>
+		<span v-bind:id="'list-'+id">ww</span>
+	</div>
+	<script src="js/vue.js"></script>
+	<script>
+		var app1=new Vue({
+			el:"#app1",
+			data:{
+				msg:"hahaha"
+			}
+		})
+		var app2=new Vue({
+			el:"#app2",
+			data:{
+				msg:"<h1>lalala</h1>"
+			}
+		})
+		var app3=new Vue({
+			el:"#app3",
+			data:{
+				msg:false,
+				msg2:"lalallalalal"
+			}
+		})
+		var app4=new Vue({
+			el:"#app4",
+			data:{
+				id:2
+			}
+		})
+	</script>
+</body>
+</html>

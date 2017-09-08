@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="event1">toggle</button>
+		<transition
+			v-on:before-enter="beforeEnter"
+			v-on:enter="enter"
+			v-on:leave="leave"
+		>
+			<p v-if="show">hellow</p>
+		</transition>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				show: true
+			},
+			methods: {
+				event1: function () {
+					this.show=!this.show 
+				},
+				beforeEnter: function (el) {
+					 el.style.opacity=0
+					 el.style.transformOrigin = 'left'
+				},
+				enter: function (el) {
+					var i=0;
+					var timer=setInterval(function () {
+						i+=0.03;
+						if(i<=1){
+							el.style.opacity=i
+						}else{
+							clearInterval(timer)
+						}
+					}, 50)
+				},
+				leave: function (el) {
+					var i=1;
+					var timer=setInterval(function () {
+						i-=0.03;
+						if(i>=0){
+							el.style.opacity=i
+						}else{
+							clearInterval(timer)
+						}
+					}, 50)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

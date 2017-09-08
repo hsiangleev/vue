@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,
+		body{
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+		}
+		#box{
+			width: 100%;
+			height: 100%;
+		}
+		#app{
+			width: 500px;
+			height: 200px;
+			margin: 0 auto;
+		}
+		.top{
+
+		}
+		.top ul,
+		.content ul{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.top li{
+			width: 15px;
+			height: 15px;
+			margin-right: 15px;
+			float: left;
+			position: relative;
+		}
+		.top span{
+			width: 5px;
+			height: 5px;
+			display: inline-block;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			background-color: #fff;
+		}
+		.addoRed{
+			background-color: gold;
+		}
+		.addoGreen{
+			background-color: pink;
+		}
+		.addoBlue{
+			background-color: #aaa;
+		}
+		.addRed{
+			background-color: #f69;
+		}
+		.addGreen{
+			background-color: #6f9;
+		}
+		.addBlue{
+			background-color: #69f;
+		}
+		.content{
+			margin-top: 10px;
+		}
+		.content li{
+			float: left;
+			margin: 0 1px;
+		}
+		.content li:first-child{
+			margin: 0;
+		}
+		.content a{
+			display: inline-block;
+			text-decoration: none;
+			width: 60px;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+			font-size: 12px;
+			color: #fff;
+		}
+
+		.clearfix:after {
+			content: " ";
+			display: block;
+			clear: both;
+			height: 0;
+		}
+		.clearfix {
+			zoom: 1;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" :class="addoClass">
+		<div id="app">
+			<div class="top">
+				<ul class="clearfix">
+					<li class="addRed" v-on:click="show1"><span v-show="seen1"></span></li>
+					<li class="addGreen" v-on:click="show2"><span v-show="seen2"></span></li>
+					<li class="addBlue" v-on:click="show3"><span v-show="seen3"></span></li>
+				</ul>
+			</div>
+			<div class="content">
+				<ul class="clearfix">
+					<li v-for="val in nav" :class="addClass"><a href="#">{{ val }}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#box",
+			data: {
+				seen1: false,
+				seen2: true,
+				seen3: false,
+				nav: ["新闻","娱乐","体育","电影","音乐","旅游"],
+				addClass: {
+					addRed: false,
+					addGreen: true,
+					addBlue: false
+				},
+				addoClass: {
+					addoRed: false,
+					addoGreen: true,
+					addoBlue: false
+				}
+			},
+			methods: {
+				show: function (boolean1,boolean2,boolean3){
+					this.seen1=boolean1;
+					this.seen2=boolean2;
+					this.seen3=boolean3;
+					this.addClass={
+						addRed: this.seen1,
+						addGreen: this.seen2,
+						addBlue: this.seen3
+					},
+					this.addoClass={
+						addoRed: this.seen1,
+						addoGreen: this.seen2,
+						addoBlue: this.seen3
+					}
+				},
+				show1: function (){
+					this.show(true,false,false);
+				},
+				show2: function (){
+					this.show(false,true,false);
+				},
+				show3: function (){
+					this.show(false,false,true);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

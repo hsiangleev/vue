@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#app{
+			width: 400px;
+			height: 300px;
+			border: 1px solid #ccc;
+			margin: 0 auto;
+			position: relative;
+		}
+		.box{
+			position: absolute;
+			top: 40px;
+			left: 0%;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="box" v-bind:style="addStyle"></div>
+		<button v-on:click="addWidth">变宽</button>
+		<button v-on:click="addHeight">变高</button>
+		<button v-on:click="changeColor">变色</button>
+		<button v-on:click="hide">隐藏</button>
+		<button v-on:click="reset">重置</button>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				addStyle: {
+					width: "150px",
+					height: "150px",
+					backgroundColor: "#333",
+					display: "block"
+				}
+			},
+			methods: {
+				addWidth: function (){
+					this.addStyle.width="250px"
+				},
+				addHeight: function (){
+					this.addStyle.height="250px"
+				},
+				changeColor: function (){
+					this.addStyle.backgroundColor="#f69"
+				},
+				hide: function (){
+					this.addStyle.display="none"
+				},
+				reset: function (){
+					this.addStyle={
+						width: "150px",
+						height: "150px",
+						backgroundColor: "#333",
+						display: "block"
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

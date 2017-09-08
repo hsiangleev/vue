@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<myh :m="msg" @input="event"></myh>
+		<div>{{ msg }}</div>
+	</div>
+
+	<script src="../../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "aa"
+			},
+			methods: {
+				event: function (value){
+					this.msg=value;
+				}
+			},
+			components: {
+				"myh": {
+					render: function (h){
+						var self=this;
+						return h("input",{
+							domProps: {
+								value: this.m
+							},
+							on: {
+								input: function (e){
+									self.$emit('input',event.target.value)  
+								}
+							}
+						})
+					},
+					props: ["m"]
+					
+				}
+			}
+		})
+	</script>
+</body>
+</html>

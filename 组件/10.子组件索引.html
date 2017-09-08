@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<child ref="ch" v-for="val in 3"></child>
+	</div>
+	
+	<template id="t1">
+		<div>{{ msg }}</div>
+	</template>
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			mounted: function (){
+				console.log(this.$refs.ch[0].msg)
+			},
+			components: {
+				"child": {
+					template: "#t1",
+					data: function (){
+						return {
+							msg: "啦啦啦啦"
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

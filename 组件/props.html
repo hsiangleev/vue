@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 让子组件使用父组件的数据 -->
+	<div id="app">
+		<input type="text" v-model="msg">
+		<child :title="msg"></child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		Vue.component("child",{
+			props: ["title"],
+			template: '<span><h2>{{ title }}</h2></span>'	//title的值绑定 父节点:title的属性值
+		})
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "lalala"
+			}
+		})
+	</script>
+</body>
+</html>

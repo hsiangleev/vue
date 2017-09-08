@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 150px;
+			height: 150px;
+			margin: 0 auto;
+			background-color: #666;
+			color: #fff;
+			font-size: 12px;
+			padding: 10px;
+			border: 10px solid #666;
+		}
+		.current{
+			cursor: crosshair;
+			border: 10px solid #f69;
+			color: #f69;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" v-bind:class="addCurrent" v-on:mouseenter="addClass" v-on:mouseleave="removeClass">{{ msg }}</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: ".box",
+			data: {
+				msg: "鼠标移入改变样式，鼠标移出恢复。",
+				addCurrent: {
+					current: false
+				}
+			},
+			methods: {
+				addClass: function (){
+					this.addCurrent.current=true;
+				},
+				removeClass: function (){
+					this.addCurrent.current=false;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

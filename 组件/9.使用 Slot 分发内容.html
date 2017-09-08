@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 将放在子组件里的不同html标签放在不同的位置
+	父组件在要分发的标签里添加 slot=”name名” 属性
+	子组件在对应分发的位置的slot标签里，添加name=”name名” 属性，
+	然后就会将对应的标签放在对应的位置了。 -->
+	<div id="app">
+		<child>
+			<!-- 不显示 -->
+			<p>hahaha</p>
+			<!-- 此行显示 -->
+			<p slot="slot1" @click="event1">hahaha</p>
+			<h3 slot="slot2">lalala</h3>
+		</child>
+	</div>
+	<template id="t1">
+		<div>
+			<slot name="slot1"></slot>
+			<button>点我</button>
+			<slot name="slot2"></slot>
+		</div>
+	</template>
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			methods: {
+				event1: function (){
+					console.log(66);
+					console.log(this.$children[0])
+				}
+			},
+			components: {
+				"child": {
+					template: "#t1"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form id="app">
+		<p><input type="text" v-model="msg">{{ msg }}</p>
+
+		<p><input type="checkbox" v-model="checked">{{ checked ? "yes" : "no" }}</p>
+
+		<p>
+			<input type="radio" name="pick" value="1" v-model="pick">
+			<input type="radio" name="pick" value="2" v-model="pick">
+			{{ pick }}
+		</p>
+
+		<p>
+			<select v-model="selected">
+				<option>one</option>
+				<option>two</option>
+			</select>
+			{{ selected }}
+		</p>
+
+		<p>
+			<select v-model="multiSelect" multiple>
+				<option>one</option>
+				<option>two</option>
+				<option>three</option>
+				<option>four</option>
+			</select>
+			{{ multiSelect }}
+		</p>
+
+	</form>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "hi",
+				checked: false,
+				pick: "1",
+				selected: "two",
+				multiSelect: []
+			}
+		})
+	</script>
+</body>
+</html>

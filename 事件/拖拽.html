@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,
+		body{
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			position: relative;
+			background-color: #ccc;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: #f69;
+			position: absolute;
+			cursor: move;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" ref="oBox" :style="addStyle" @mousedown="event1" @mouseup="event2"></div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#box",
+			data: {
+				x: 0,
+				y: 0,
+				xx: 0,
+				yy: 0,
+				addStyle: {
+					top: "200px",
+					left: "200px"
+				}
+			},
+			methods: {
+				event1: function (e){
+					var self=this;
+					//获取dom元素样式
+					var oLeft=this.$refs["oBox"].offsetLeft;
+					var oTop=this.$refs["oBox"].offsetTop;
+					this.x=e.clientX-oLeft;
+					this.y=e.clientY-oTop;
+					document.onmousemove=function (e){
+						self.xx=e.clientX-self.x;
+						self.yy=e.clientY-self.y;
+
+						self.addStyle={
+							top: self.yy+"px",
+							left: self.xx+"px"
+						}
+					}
+				},
+				event2: function (e){
+					// console.log(this.$refs["oBox"].style.cssText)
+					document.onmousemove=null;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

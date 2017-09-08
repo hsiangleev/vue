@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#app{
+			width: 800px;
+			height: 100px;
+			margin: 100px auto;
+			background-color: #ccc;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			list-style: none;
+		}
+		li{
+			float: left;
+			width: 120px;
+			height: 40px;
+			background-color: #69f;
+			color: #fff;
+			margin: 10px;
+			line-height: 40px;
+			text-align: center;
+			cursor: pointer;
+		}
+		p{
+			text-align: center;
+		}
+		span{
+			color: red;
+		}
+		.show{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(item,index) in arr" :class="{ show: item.active}" @click="toggle(item,index)">{{ item.name }}</li>
+		</ul>
+		<p>your choose: <span>{{ name }}</span></p>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				name: "html",
+				arr: [
+					{
+						name: "html",
+						active: true
+					},
+					{
+						name: "css",
+						active: false
+					},
+					{
+						name: "javascript",
+						active: false
+					},
+					{
+						name: "jquery",
+						active: false
+					},
+					{
+						name: "vue.js",
+						active: false
+					}
+				]
+			},
+			methods: {
+				toggle: function (item,index) {
+					this.name=item.name;
+					for (var i = 0; i < this.arr.length; i++) {
+						this.arr[i].active=false;
+					}
+					this.arr[index].active=true;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

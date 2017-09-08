@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<mydiv :f="arr">
+			
+		</mydiv>
+	</div>
+
+	<script src="../../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			components: {
+				"mydiv": {
+					// render: function (h){
+					// 	return h("ul",
+					// 			Array.apply(null,this.f.map(function (value){
+					// 				return h("li",{
+					// 					domProps: {
+					// 						innerHTML: value
+					// 					}
+					// 				})
+					// 			}))
+					// 		)
+					// },
+					render: function (h){
+						return h("ul",this.f.map(function (value){
+							return h("li",value)
+						}));
+					},
+					props: ["f"]
+				}
+			},
+			data: {
+				arr: [4,2,3,5]
+			}
+		})
+	</script>
+</body>
+</html>

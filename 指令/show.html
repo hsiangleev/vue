@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<!-- 添加一个display样式 -->
+	<!-- v-show也是条件渲染指令，和v-if指令不同的是，使用v-show指令的元素始终会被渲染到HTML，它只是简单地为元素设置CSS的style属性。 -->
+	<div id="oShow">
+		<h1 v-show="seen">zzzzzzzzzzzzz</h1>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var app=new Vue({
+			el: "#oShow",
+			data: {
+				seen: true
+			}
+		})
+	</script>
+</body>
+</html>

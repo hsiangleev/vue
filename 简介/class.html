@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.style{
+			width: 100px;
+			height: 100px;
+			background-color: #0c0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app1" v-bind:class="astyle" v-on:click="myclick">
+		
+	</div>
+	<div id="app2">
+		<p v-if="ok">aaa</p>
+		<p v-else>bbb</p>
+	</div>
+	<ul id="app3">
+		<template v-for="(person,index) in myData">
+			<li><a href="#">{{person.name}}:{{person.age}},{{index}}</a></li>
+			<li>aaa</li>
+		</template>
+	</ul>
+
+
+	<script src="js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el:"#app1",
+			data:{
+				astyle:{
+					style:true
+				}
+			},
+			methods:{
+				myclick:function () {
+					this.astyle=false
+				}
+			}
+		})
+		var vm2=new Vue({
+			el:"#app2",
+			data:{
+				ok:true
+			}
+
+		})
+		var vm3=new Vue({
+			el:"#app3",
+			data:{
+				myData:[
+					{name:"张三",age:15},
+					{name:"李四",age:16},
+					{name:"王五",age:17}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

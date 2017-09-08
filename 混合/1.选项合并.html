@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script src="../js/vue.js"></script>
+	<script>
+		// 当组件和混合对象含有同名选项时，这些选项将以恰当的方式混合。比如，同名钩子函数将混合为一个数组，因此都将被调用。另外，混合对象的 钩子将在组件自身钩子 之前 调用 
+		var mixin={
+			created: function (){
+				console.log("混合对象钩子调用")
+			}
+		}
+		new Vue({
+			mixins: [mixin],
+			created: function (){
+				console.log("组件钩子调用")
+			}
+		})
+
+		// 值为对象的选项，例如 methods, components 和 directives，将被混合为同一个对象。 两个对象键名冲突时，取组件对象的键值对。
+		var mixin1={
+			data: {
+				msg: "混合对象信息",
+				name: "lee"
+			}
+		}
+		new Vue({
+			mixins: [mixin1],
+			data: {
+				msg: "组件对象信息",
+				age: 18
+			},
+			created: function (){
+				console.log(this.name)
+				console.log(this.age)
+				console.log(this.msg)
+			}
+		})
+	</script>
+</body>
+</html>

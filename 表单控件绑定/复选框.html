@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 若checkedname为数组  选中则value值存放在数组中 -->
+		<!-- 若checkedname为布尔值  选中则checkedname为true -->
+		<input type="checkbox" value="aa" v-model="checkedname">
+		<label>a</label>
+		<input type="checkbox" value="bb" v-model="checkedname">
+		<label>b</label>
+		<input type="checkbox" value="cc" v-model="checkedname">
+		<label>c</label>
+		<div>checkedname: {{ checkedname }}</div>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				checkedname: []
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<body>  
+    <div id="app">  
+        <mycom :v="nnum">  
+            
+        </mycom>  
+        <div>{{nnum}}</div>  
+    </div>  
+    <script src="js/vue.js"></script>
+    <script>  
+        Vue.component('mycom',{  
+            render:function(createElement){  
+                var self=this;  
+                var inp=createElement('input',  
+                                    {  
+                                        domProps:{  
+                                            value:self.v  
+                                        }  
+                                    });  
+                    return createElement('div',[inp])  
+  
+                },  
+            props:{  
+                v:{  
+                    type:Number,  
+                    default:0  
+                }
+  
+            }  
+        });  
+        var app=new Vue({  
+            el:'#app',  
+            data:{  
+                nnum:1001
+            }  
+        })  
+    </script>  
+    </body> 

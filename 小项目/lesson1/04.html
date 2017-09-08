@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 400px;
+			height: 200px;
+			margin: 0 auto;
+			position: relative;
+		}
+		button{
+			position: absolute;
+			top: 0;
+			left: 100px;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			display: inline-block;
+			margin-right: 5px;
+			margin-top: 50px;
+		}
+		.addRed{
+			background-color: #f69;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<button v-on:click="addColor">点击切换div颜色</button>
+		<div class="box" v-for="n in 3" v-bind:class="addStyle"></div>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#box",
+			data: {
+				addStyle: {
+					addRed: false
+				}
+			},
+			methods: {
+				addColor: function (){
+					if(this.addStyle.addRed){
+						this.addStyle.addRed=false;
+					}else{
+						this.addStyle.addRed=true;
+					}
+					
+				}
+			}
+		})
+	</script>
+</body>
+</html>

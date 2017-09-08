@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#app{
+			width: 300px;
+			height: 100px;
+			background-color: #ddd;
+			margin: 100px auto;
+		}
+		.slide-enter-active{
+			animation: k1 2s linear;
+		}
+		.slide-leave-active{
+			animation: k1 2s linear;
+		}
+		@keyframes k1{
+			0%{
+				transform: rotate(30deg);
+				transform-origin: left;
+			}
+			50%{
+				transform-origin: left;
+				transform: rotate(180deg);
+			}
+			100%{
+				transform-origin: left;
+				transform: rotate(360deg);
+				opacity: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="event1">toggle</button>
+		<transition name="slide">
+			<p v-if="tog">aaaaa</p>
+		</transition>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				tog: true
+			},
+			methods: {
+				event1: function () {
+					this.tog=!this.tog
+				}
+			}
+		})
+	</script>
+</body>
+</html>

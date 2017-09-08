@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p{
+			width: 300px;
+			height: 300px;
+			float: left;
+			margin: 10px;
+			background-color: #ccc;
+		}
+		.active{
+			background-color: #f69;
+		}
+		.error{
+			border: 1px solid #69f;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- 直接绑定对象的内容 -->
+		<p :style="{background: 'pink',width: a+'px'}" @click="event1">aaa</p>
+
+		 <!--  绑定对象 -->
+		 <p :style="styleObj"></p>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				a: 50,
+				styleObj: {
+					background: "pink"
+				}
+			},
+			methods: {
+				event1: function () {
+					var timer=setInterval(function () {
+						if(vm.a<1000){
+							vm.a+=10
+						}else{
+							clearInterval(timer)
+						}
+					}, 50)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

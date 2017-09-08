@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<myh></myh>
+	</div>
+	<script src="../../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			components: {
+				"myh": {
+					render: function (createElement){
+						return createElement("h2",this.msg)
+					},
+					data: function (){
+						return {
+							msg: "哈哈哈哈"
+						}
+					}
+				}
+			}
+				
+		})
+	</script>
+</body>
+</html>

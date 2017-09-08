@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.slide-enter,
+		.slide-leave-to{
+			opacity: 0;
+			transform: rotateX(360deg);
+		}
+		.slide-enter-active,
+		.slide-leave-active{
+			transition: all 5s;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="event1">toggle</button>
+		<transition name="slide">
+			<p v-if="show">啦啦啦啦</p>
+		</transition>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				show: true
+			},
+			methods: {
+				event1: function (){
+					this.show=!this.show;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

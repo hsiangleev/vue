@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app" >
+		<child v-for="val in arr" :message="val">
+			<i slot="s1">lala</i>
+			<b>哈哈哈</b>
+		</child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+	//用来访问 scoped slots。对于包括 默认 slot 在内的每一个 slot，该对象都包含一个返回相应 VNode 的函数。
+	// 在使用 render 函数 书写一个组件时，访问 vm.$scopedSlots 最有帮助。
+		var tem={
+			props: ["message"],
+			template: "<p><slot name='s1'></slot>{{ message }}</p>",
+			mounted: function (){
+				console.log(this.$scopedSlots)	
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				arr: ["aaa","bbb","ccc"]
+			},
+			components: {
+				"child": tem
+			}
+		})
+	</script>
+</body>
+</html>

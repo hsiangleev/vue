@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 100px;
+			margin: 0 auto;
+			border: 1px solid #ccc;
+		}
+		input[type="submit"]{
+			margin-left: 50px;
+			margin-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<input type="text" v-for="val in arr" v-model="val.msg">
+		<input type="submit" v-on:click="event1">
+	</div>
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#box",
+			data: {
+				arr: [
+					{
+						msg: "安徽省"
+					},
+					{
+						msg: "池州市"
+					},
+					{
+						msg: "贵池区"
+					}
+				]
+			},
+			methods: {
+				event1: function (){
+					this.arr.forEach( function(val, index) {
+						alert(val.msg)
+					});
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box">
+		<child msg="hellow"></child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		// 组件实例的作用域是孤立的。这意味着不能 (也不应该) 在子组件的模板内直接引用父组件的数据。要让子组件使用父组件的数据，我们需要通过子组件的 props 选项。
+		Vue.component("child",{
+			props: ["msg"],
+			template: "<span>{{ msg }}</span>"
+		})
+		new Vue({
+			el: ".box",
+
+		})
+	</script>
+</body>
+</html>

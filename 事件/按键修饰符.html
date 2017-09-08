@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 当按键为a时触发 -->
+		<!--
+		 .enter
+		.tab
+		.delete (捕获 “删除” 和 “退格” 键)
+		.esc
+		.space
+		.up
+		.down
+		.left
+		.right
+		.ctrl
+		.alt
+		.shift
+		.meta (在Windows系统键盘meta对应windows徽标键(⊞))
+		-->
+		<input type="text" @keyup.65="event1">
+		{{ msg }}
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "hi"
+			},
+			methods: {
+				event1: function () {
+					alert("您按了a键")
+				}
+			}
+		})
+	</script>
+</body>
+</html>

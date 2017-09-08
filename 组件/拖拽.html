@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,
+		body{
+			padding: 0;
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #ccc;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			background-color: #f69;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<mydrag></mydrag>
+	</div>
+	<script src="../js/vue.js"></script>
+	<script>
+		var tem={
+			template: "<div class='box' ref='drag' @mousedown='downStar' @mouseup='downEnd'></div>",
+			data: function (){
+				return {
+					x: 0,
+					y: 0,
+					xx: 0,
+					yy: 0
+				}
+			},
+			methods: {
+				downStar: function (e){
+					var self=this;
+					this.x=e.clientX-this.$refs["drag"].offsetLeft;
+					this.y=e.clientY-this.$refs["drag"].offsetTop;
+					document.onmousemove=function (e){
+						self.xx=e.clientX-self.x;
+						self.yy=e.clientY-self.y;
+						self.$refs["drag"].style.left=self.xx+"px";
+						self.$refs["drag"].style.top=self.yy+"px";
+					}
+				},
+				downEnd: function (){
+					document.onmousemove=null;
+				}
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			components: {
+				"mydrag": tem
+			}
+		})
+	</script>
+</body>
+</html>

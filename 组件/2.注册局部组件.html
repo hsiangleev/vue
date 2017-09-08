@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="app">
+		<my-ul></my-ul>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var myUl={
+			template: `
+				<ul>
+					<li>{{ msg1 }}</li>
+					<li>{{ msg2 }}</li>
+					<li>{{ msg3 }}</li>
+				</ul>
+			`,
+			data: function (){
+				return {
+					msg1: "aaa",
+					msg2: "bbb",
+					msg3: "ccc"
+				}
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			components: {
+				"my-ul": myUl
+			}
+		})
+	</script>
+</body>
+</html>

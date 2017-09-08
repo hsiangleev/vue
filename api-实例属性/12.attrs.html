@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app" >
+		<child :msg="msg"></child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+	//包含了父作用域中不被认为 (且不预期为) props 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 props 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind="$attrs" 传入内部组件——在创建更高层次的组件时非常有用。
+		
+		var tem={
+			props: ["msg"],
+			template: "<p>{{ this.$parent.msg }}</p>",
+			mounted: function (){
+				console.log(this.$attrs)	
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "aaa"
+			},
+			components: {
+				"child": tem
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="app1">
+		
+	</div>
+	
+<!-- 	<script type="x-template" id="app2">
+		<ul>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</script> -->
+	<script src="js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el:"#app1",
+			render:function (creatElement) {
+			
+				return creatElement(
+					"ul",
+					[
+						creatElement("li",1),
+						creatElement("li",2),
+						creatElement("li",3)
+					]
+
+				)
+			}
+		})
+
+
+		// var vm=new Vue({
+		// 	el:"#app1",
+		// 	template:"#app2"
+
+		// })
+	</script>
+</body>
+</html>

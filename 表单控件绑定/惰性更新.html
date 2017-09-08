@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form id="app">
+		<!-- 在 change 事件之后才进行同步 （失去焦点） -->
+		<p><input type="text" v-model.lazy="msg">{{ msg }}</p>
+	</form>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "hi"
+			}
+		})
+	</script>
+</body>
+</html>

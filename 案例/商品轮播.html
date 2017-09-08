@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #ccc;
+		}
+		#app{
+			width: 1200px;
+			height: 500px;
+			margin: 50px auto;
+			position: relative;
+			background-color: #fff;
+		}
+		.box{
+			width: 400px;
+			height: 400px;
+			position: absolute;
+			overflow: hidden;
+		}
+		.slide{
+			width: 410%;
+			height: 400px;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			list-style: none;
+		}
+		.slide li{
+			float: left;
+		}
+		.slide img{
+			width: 400px;
+			height: 400px;
+		}
+		.smallImg{
+			width: 400px;
+			height: 90px;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			bottom: 5px;
+			list-style: none;
+		}
+		.smallImg li{
+			float: left;
+			margin: 0 5px;
+		}
+		.smallImg li img{
+			width: 90px;
+			height: 90px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="box">
+			<ul class="slide">
+				<li v-for="index in arr"><img :src="index" alt=""></li>
+			</ul>
+		</div>
+		<ul class="smallImg">
+			<li v-for="(item,index) in arr"><img :src="item" @mouseenter="event1(item,index)" alt=""></li>
+		</ul>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				arr: ["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg"]
+			},
+			methods: {
+				event1: function (item,index) {
+					var sli=document.querySelector(".slide");
+					var target=-400*index;
+					var leader=0;
+					var timer=setInterval(function () {
+						leader+=target/10;
+						if(leader<=target){
+							clearInterval(timer);
+						}else{
+							sli.style.left=leader+"px"
+						}
+					}, 50)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 让子组件使用父组件的数据 -->
+	<div id="app">
+		<child :message="msg" :time="age"></child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		Vue.component("child",{
+			props: ["message","time"],
+			template: `
+				<div>
+					<h3>{{ title }}</h3>
+					<p>{{ message }}</p>
+					<i>{{ time }}</i>
+				</div>
+			`,
+			data(){
+				return {
+					title: "越人歌"
+				}
+			}
+		})
+
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg:"山有木兮木有枝,心悦君兮君不知",
+				age: 3000
+			}
+		})
+	</script>
+</body>
+</html>

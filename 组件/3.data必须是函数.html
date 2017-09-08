@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="app">
+		<my-ul></my-ul>
+		<my-ul></my-ul>
+		<my-ul></my-ul>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		Vue.component("my-ul",{
+			template: '<button @click="event1">{{ counter }}</button>',
+			data: function () {
+				return {
+					counter: 0
+				}
+			},
+			methods: {
+				event1: function () {
+					return this.counter++
+				}
+			}
+		})
+		var vm=new Vue({
+			el: "#app"
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<mybtn @togg="add"></mybtn>
+		<mybtn @togg="add"></mybtn>
+		<mybtn @togg="add"></mybtn>
+		<div>{{ toggle }}</div>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		// 子组件已经和它外部完全解耦了。它所做的只是报告自己的内部事件，至于父组件是否关心则与它无关
+		var tem={
+			template: "<button @click='addOne'>{{ counter }}</button>",
+			data: function (){
+				return {
+					counter: 0
+				}
+			},
+			methods: {
+				addOne: function (){
+					this.counter++;
+
+					//触发自定义togg事件
+					this.$emit("togg");
+				}
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				toggle: 0
+			},
+			methods: {
+				add: function (){
+					this.toggle++;
+				}
+			},
+			components: {
+				"mybtn": tem
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app1">
+		<input v-model="question">
+		<p>{{answer}}</p>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script>
+		var vm=new Vue({
+			el:"#app1",
+			data:{
+				question:"",
+				answer:"哈哈哈哈哈哈哈哈"
+			},
+			watch:{
+				answer:function (newQue) {
+					this.question=newQue
+					
+				}
+			}
+			
+		})
+	</script>
+</body>
+</html>

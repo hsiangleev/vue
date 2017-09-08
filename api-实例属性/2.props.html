@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app" >
+		<child :message="msg"></child>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+	// 一个对象，代表当前组件收到的 props。Vue 示例代理访问到这个 props 对象的属性们。
+		var tem={
+			props: ["message"],
+			template: "<p @click='event'>{{ message }}</p>",
+			methods: {
+				event: function (){
+					console.log(this.$props.message)
+				}
+			}
+		}
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				msg: "aaa"
+			},
+			components: {
+				"child": tem
+			}
+			
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 让子组件使用父组件的数据 -->
+	<div id="app">
+		<ul>
+			<child v-for="index in person" :title="index"></child>
+		</ul>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+		Vue.component("child",{
+			props: ["title"],
+			template: "<li>{{ title.name }}</li>"
+		})
+
+		var vm=new Vue({
+			el: "#app",
+			data: {
+				person: [
+					{
+						name: "tom",
+						age: 18,
+						sex: "male"
+					},
+					{
+						name: "jack",
+						age: 20,
+						sex: "male"
+					},
+					{
+						name: "lee",
+						age: 23,
+						sex: "male"
+					},
+				]
+			}
+		})
+	</script>
+</body>
+</html>
